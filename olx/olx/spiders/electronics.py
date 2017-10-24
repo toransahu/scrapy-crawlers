@@ -27,11 +27,11 @@ class ElectronicsSpider(CrawlSpider):
     restrict_css parameter: to set the class for NEXT page. Use inspect element
                             to find the class.
     """
-    rules = (Rule(
-        LinkExtractor(allow=(), restrict_css=('.pageNextPrev', )),
-        callback="parse_item",
-        follow=True, ))
+    rules = (
+        Rule(LinkExtractor(allow=(), restrict_css=('.pageNextPrev',)),
+             callback="parse_item",
+             follow=True),)
 
-    def parse(self, response):
+    def parse_item(self, response):
         """Parse the content of the page."""
         print('Processing..' + response.url)
