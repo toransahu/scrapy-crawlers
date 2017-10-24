@@ -26,6 +26,8 @@ class ElectronicsSpider(CrawlSpider):
     LinkExtractor: actually takes parameters to draw navigation boundaries.
     restrict_css parameter: to set the class for NEXT page. Use inspect element
                             to find the class.
+    follow parameter: to navigate till rule fails
+    callback: parsing function to callback
     """
     rules = (
         Rule(LinkExtractor(allow=(), restrict_css=('.pageNextPrev',)),
